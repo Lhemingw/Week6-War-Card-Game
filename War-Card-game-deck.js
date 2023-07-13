@@ -159,3 +159,4 @@ for (let key in count) {
 //function dealt(params) { // put each card in players array
     
 //}
+//Put something here to do a push
