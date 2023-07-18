@@ -29,8 +29,16 @@ const VALUES = ["A",
 "Q", 
 "K"]
 //const deck = new Array(SUITES, VALUES);
+function freshDeck() {  //This is to create for us a brand new deck of cards w/52 cards one for each suit/value combo
+    return SUITS.flatMap(suits => {  //loop through all the suits and values all in one array, what map function is for
+        return VALUES.map(value =>{
+            return new Card(suit, values)
+        })//This will do is loop through all values and map them into an array condince into one array
+    })
 
-// function getDeck(params) {
+}   
+
+
 //     deck = new Array();
 //     for (let i = 0; i < SUITS.length; i++) {
 //         for (let x = 0; x < VALUES.length; x++) {
@@ -38,13 +46,11 @@ const VALUES = ["A",
 //             var card = {
 //                 Value: cards [x],
 //                 SUITS: suits[i]
-//             };
 //             deck.push(card)
             
-//         }
-//     }
+
 //     return deck;
-//     }
+
 
 // 2. Define the Deck class:
 //    - Properties:
@@ -54,18 +60,17 @@ const VALUES = ["A",
 //      - `shuffle()`: Shuffles the cards in the deck randomly.
 //      - `dealCard()`: Removes and returns the top card from the deck.
 class Card{  //do I need this??
-    constructor(SUITS, VALUE) {
-        this.SUITS  = SUITS;
+    constructor(SUIT, VALUE) {
+        this.SUIT  = SUIT;
         this.VALUE = VALUE;
     }
 }
 
 // 4. Create an instance of the Deck class and initialize it.
-class Deck {
-    constructor(cards){
-      this.cards = [];
+export default class Deck {
+    constructor(cards = freshDeck()){
+      this.cards = cards;
     };
-    }
 
     //or do I do this code??
 
@@ -74,9 +79,7 @@ class Deck {
         // and returning a new instance if it hasn't. However, 
         // in the context of the Deck class constructor, this check is not needed. 
         // this.cards = cards;
-        get card() {
-            return this.cards;
-        }
+        //   
 
       
       
@@ -97,7 +100,7 @@ class Deck {
      
 
 
-    createDeck(){
+    createDeck() {
     for (let suit of SUITS) {
         for(let value of VALUES) {
             const card = new Card(suit, value);
@@ -118,7 +121,8 @@ class Deck {
     //     }
     // } 
 
-    cards = new Card[DECK_SIZE];
+    
+cards = new Card[DECK_SIZE];
 // String suits[] = {}"♠", "♣", "♥", "♦"];
 // String cards[] = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Joker", "Queen", "King"};
 
@@ -151,6 +155,7 @@ class Deck {
   
     dealCard() {
     return this.cards.pop();
+        alert(dealCards);
     }
           
     // function shuffle(SUITS){  //I may not need this function.  Do I need this??
@@ -161,7 +166,7 @@ class Deck {
             
     //     //SUITS.sort(() => Math.random() -0.5);
     //     }
-    // }
+    }
     shuffle(SUITS);
     count[SUITS.join(``)]++;
 
@@ -169,7 +174,7 @@ class Deck {
     const deck = new Deck();
     deck.createDeck();
     deck.shuffle();
-    
+   
 
 
 SUITS = {  //counts of appearance for all possible permutations
